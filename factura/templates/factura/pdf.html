@@ -1,0 +1,52 @@
+
+<style>
+    body {
+        text-align: left;
+    }
+    
+    table {
+        background-color: white;
+        text-align: center;
+    }
+
+</style>
+
+<h1 class="title">FACTURA</h1>
+<hr>
+    <p><strong>Nº Factura:</strong> {{ factura.pk }}<br>
+        <strong>Nombre cliente:</strong> {{ factura.cliente_nombre }}<br>
+        <strong>Dirección cliente:</strong> {{ factura.cliente_direccion }}<br>
+        <strong>Teléfono cliente:</strong> {{ factura.cliente_telefono }}<br>
+        <strong>Fecha de emisión de la factura:</strong> {{ factura.fecha_emision }}
+    </p>
+<hr>
+
+<div><table class="table" border="1">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"><br>Nombre del producto<br></th>
+            <th scope="col">  Referencia  </th>
+            <th scope="col">  Unidades  </th>
+            <th scope="col">  Precio unitario  </th>
+            <th scope="col">  Precio total  </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l in linea_f %}
+        <tr>
+            <td><br>{{ l.producto.nombre_producto }}<br></td>
+            <td>{{ l.producto.ref_producto }}</td>
+            <td>{{ l.unidades }}</td>
+            <td>{{ l.producto.precio_unitario }} €</td>
+            <td>{{ l.precio_total }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<h4>
+La suma total es: {{ psum }} €<br>
+Precio final IVA Incluido (21%): {{ ptiva }} €
+</h4>
+

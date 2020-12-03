@@ -1,0 +1,32 @@
+{% extends 'factura/base.html' %}
+
+{% block content %}
+
+<h1>Resultados de la búsqueda</h1>
+
+<body>
+
+    <p>Estás buscando: <strong>{{query}}</strong></p>
+
+    {% if articulos %}
+
+        <p>Artículos encontrados: {{articulos|length}} articulos</p>
+
+        <ul>
+
+            {% for producto in articulos %}
+                
+                    {{producto.nombre_producto}} &nbsp; Sección: {{producto.seccion}} &nbsp; Precio: {{producto.precio_unitario}} € <br>
+
+            {% endfor %}
+        </ul>
+    {% else %}
+
+        <p>No se encontró el artículo buscado</p>
+
+    {% endif %}
+
+</body>
+{% endblock content %}
+
+

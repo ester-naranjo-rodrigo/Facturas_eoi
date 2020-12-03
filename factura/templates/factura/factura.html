@@ -1,0 +1,43 @@
+{% extends 'factura/base.html' %}
+
+{% block content %}
+
+<style>
+    div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    table {
+        background-color: white;
+    }
+</style>
+
+<h1 class="title">Facturas</h1>
+
+<div><table class="table" border="1">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">  Código  </th>
+            <th scope="col">  Datos Cliente  </th>
+            <th scope="col">  Fecha de emisión  </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in factura %}
+        <tr>
+            <td><a href='{{ p.pk }}'>{{ p.pk }}</a></td>
+            <td>{{ p.cliente_nombre }}
+                <br><small>
+                {{ p.cliente_direccion }}
+                <br>
+                {{ p.cliente_telefono }}
+                </small>
+            </td>
+            <td>{{ p.fecha_emision }}</p>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

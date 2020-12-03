@@ -1,0 +1,19 @@
+{% extends 'factura/base.html' %}
+
+{% block content %}
+    
+<h1>Búsqueda de productos</h1>
+
+<body>
+
+    <form action="/buscar/" method="GET">
+
+        <input type="text" name="clave">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+</body>
+
+{% endblock content %}
